@@ -78,7 +78,7 @@ public class rapoo {
             System.out.println("player 2 is now at " + (int) player2Count + " points!");
 
             if (player2Count >= 40) {
-                System.out.println("Player 2 has won this game! \nCongrats player 1! -and better luck next time player 2 🙂");
+                System.out.println("Player 2 has won this game! \nCongrats player 2! -and better luck next time player 1 🙂");
                 endGame();
             }
         }
