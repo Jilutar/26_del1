@@ -65,7 +65,7 @@ public class rapoo {
             player1Count += dice1 + dice2;
             System.out.println("player 1 is now at " + (int) player1Count + " points!");
 
-            if (player1Count >= 40 && dice1 == dice2) {
+            if (player1Count >= 40 ) {
                 System.out.println("Player 1 has won this game! \nCongrats player 1! -and better luck next time player 2 🙂");
                 endGame();
             }
@@ -76,7 +76,7 @@ public class rapoo {
             player2Count += dice1 + dice2;
             System.out.println("player 2 is now at " + (int) player2Count + " points!");
 
-            if (player2Count >= 40 && dice1 == dice2) {
+            if (player2Count >= 40) {
                 System.out.println("Player 2 has won this game! \nCongrats player 1! -and better luck next time player 2 🙂");
                 endGame();
             }
