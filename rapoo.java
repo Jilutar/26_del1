@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 //Hej fra root3008
+// Hej fra GRH
 
 public class rapoo {
     //de følgende linjer er static, fordi de ellers ikke kan bruges i funktionenerne eller main nedenunder.
@@ -31,8 +32,22 @@ public class rapoo {
             }else if (inputlow.equals("no")) {
                 System.out.println("Okay, the game will continue! Here's the throw:");
                 }
+        } else if (!inputlow.equals("yes")) {
+            do {
+                System.out.println("Invalid input - try again: (yes/no)");
+                input = scanner.nextLine();
+                inputlow = input.toLowerCase();
+                if (inputlow.equals("yes") || inputlow.equals("no")) {
+                    break;
+                }
+            } while (!inputlow.equals("yes") || !inputlow.equals("no"));
+
+         
+            }
+            
+
         }
-    }
+    
 
     //følgende funktion er lavet for ikke at gentage de to linjer igen og igen (3-4 gange) XD.
     static void rollDice() {
