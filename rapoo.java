@@ -20,7 +20,7 @@ public class rapoo {
     //en funktion der behandler brugerens input (er ikke helt polished (test-wise) og kan gøres kortere (kode-wise))
     static void userResponse() {
         input = scanner.nextLine();
-        inputlow = input.toLowerCase(); //tilføj .toLowerCase() på alle lignende (^_^)
+        inputlow = input.toLowerCase();
         if (inputlow.equals("no")) {
             System.out.println("Are you sure? If you are, then the game will end.");
             input = scanner.nextLine();
