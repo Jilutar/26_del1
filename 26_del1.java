@@ -1,7 +1,8 @@
 import java.util.Scanner;
-// hej fra GustavRH
 
-public class DiceGame {
+//Hej fra root3008
+
+public class rapoo {
     //de følgende linjer er static, fordi de ellers ikke kan bruges i funktionenerne eller main nedenunder.
     static Scanner scanner = new java.util.Scanner(System.in);
     static String input;
@@ -17,7 +18,7 @@ public class DiceGame {
 
     //en funktion der behandler brugerens input (er ikke helt polished (test-wise) og kan gøres kortere (kode-wise))
     static void userResponse() {
-        input = scanner.nextLine(); //tilføj .toLowerCase() på alle lignende 
+        input = scanner.nextLine(); //tilføj .toLowerCase()
         if (input.equals("no")) {
             System.out.println("Are you sure? If you are, then the game will end.");
             input = scanner.nextLine();
@@ -61,7 +62,7 @@ public class DiceGame {
             player1Count += dice1 + dice2;
             System.out.println("player 1 is now at " + (int) player1Count + " points!");
 
-            if (player1Count >= 40 && dice1 == dice2) {
+            if (player1Count >= 40 ) {
                 System.out.println("Player 1 has won this game! \nCongrats player 1! -and better luck next time player 2 🙂");
                 endGame();
             }
@@ -72,7 +73,7 @@ public class DiceGame {
             player2Count += dice1 + dice2;
             System.out.println("player 2 is now at " + (int) player2Count + " points!");
 
-            if (player2Count >= 40 && dice1 == dice2) {
+            if (player2Count >= 40) {
                 System.out.println("Player 2 has won this game! \nCongrats player 1! -and better luck next time player 2 🙂");
                 endGame();
             }
