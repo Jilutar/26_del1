@@ -6,6 +6,7 @@ public class rapoo {
     //de følgende linjer er static, fordi de ellers ikke kan bruges i funktionenerne eller main nedenunder.
     static Scanner scanner = new java.util.Scanner(System.in);
     static String input;
+    static String inputlow;
     //dice variablerne er type double, for at kunne bruge random funktionen, der ikke virker med int.
     static double dice1;
     static double dice2;
@@ -18,17 +19,19 @@ public class rapoo {
 
     //en funktion der behandler brugerens input (er ikke helt polished (test-wise) og kan gøres kortere (kode-wise))
     static void userResponse() {
-        input = scanner.nextLine(); //tilføj .toLowerCase() på alle lignende (^_^)
-        if (input.equals("no")) {
+        input = scanner.nextLine();
+        inputlow = input.toLowerCase(); //tilføj .toLowerCase() på alle lignende (^_^)
+        if (inputlow.equals("no")) {
             System.out.println("Are you sure? If you are, then the game will end.");
             input = scanner.nextLine();
-            if (input.equals("yes")) {
+            inputlow = input.toLowerCase();
+            if (inputlow.equals("yes")) {
                 System.out.println("Game ended.");
                 endGame();
-            }else if (input.equals("no")) {
+            }else if (inputlow.equals("no")) {
                 System.out.println("Okay, the game will continue! Here's the throw:");
                 }
-            }
+        }
     }
 
     //følgende funktion er lavet for ikke at gentage de to linjer igen og igen (3-4 gange) XD.
