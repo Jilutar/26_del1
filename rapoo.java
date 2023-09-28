@@ -44,6 +44,7 @@ public class rapoo {
     public static void main(String[] args) {
         System.out.println("Welcome to the dice game! Would you like to play? (yes/no)");
         userResponse(); //bruger funktionen skrevet ovenover
+        System.out.println("First to 40 points win!");
 
         //disse er double da de senere bliver assign'et dice 1 og 2, som er double's (pga. random funktionen)
         double player1Count = 0;
