@@ -1,55 +1,39 @@
 import java.util.Scanner;
 
-//Hej fra root3008
-// Hej fra GRH
+public class DiceGame {
+    private static Scanner scanner = new java.util.Scanner(System.in);
+    private static String input;
+    private static double dice1;
+    private static double dice2;
 
-public class rapoo {
-    //de følgende linjer er static, fordi de ellers ikke kan bruges i funktionenerne eller main nedenunder.
-    static Scanner scanner = new java.util.Scanner(System.in);
-    static String input;
-    static String inputlow;
-    //dice variablerne er type double, for at kunne bruge random funktionen, der ikke virker med int.
-    static double dice1;
-    static double dice2;
-
-    //følgende funktion er lavet for ikke at gentage de to linjer igen og igen (3-4 gange) XD.
     static void endGame() {
         System.exit(0);
         scanner.close();
     }
 
-    //en funktion der behandler brugerens input (er ikke helt polished (test-wise) og kan gøres kortere (kode-wise))
     static void userResponse() {
-        input = scanner.nextLine();
-        inputlow = input.toLowerCase();
-        if (inputlow.equals("no")) {
-            System.out.println("Are you sure? If you are, then the game will end.");
-            input = scanner.nextLine();
-            inputlow = input.toLowerCase();
-            if (inputlow.equals("yes")) {
+        input = scanner.nextLine().toLowerCase();
+        if (input.equals("no")) {
+            System.out.println("Are you sure? If you are, then the game will end. (yes/no)");
+            input = scanner.nextLine().toLowerCase();
+            if (input.equals("yes")) {
                 System.out.println("Game ended.");
                 endGame();
-            }else if (inputlow.equals("no")) {
+            }else if (input.equals("no")) {
                 System.out.println("Okay, the game will continue! Here's the throw:");
-                }
-        } else if (!inputlow.equals("yes")) {
+            }
+        } else if (!input.equals("yes")) {
             do {
-                System.out.println("Invalid input - try again: (yes/no)");
-                input = scanner.nextLine();
-                inputlow = input.toLowerCase();
-                if (inputlow.equals("yes") || inputlow.equals("no")) {
+                System.out.println("This input is not valid. Please type yes or no");
+                input = scanner.nextLine().toLowerCase();
+                if (input.equals("yes") || input.equals("no")) {
                     break;
                 }
-            } while (!inputlow.equals("yes") || !inputlow.equals("no"));
-
-         
             }
-            
-
+            while(!input.equals("yes") || !input.equals("no"));
         }
-    
+    }
 
-    //følgende funktion er lavet for ikke at gentage de to linjer igen og igen (3-4 gange) XD.
     static void rollDice() {
         dice1 = Math.floor(Math.random() *(6 - 1 + 1) + 1);
         dice2 = Math.floor(Math.random() *(6 - 1 + 1) + 1);
@@ -58,31 +42,44 @@ public class rapoo {
 
     public static void main(String[] args) {
         System.out.println("Welcome to the dice game! Would you like to play? (yes/no)");
-        userResponse(); //bruger funktionen skrevet ovenover
-        System.out.println("First to 40 points win!");
+        userResponse();
+        System.out.println("The game is played with 2 dice.");
+        System.out.println("First to 40 points, wins the game!");
+        System.out.println("You can also win by getting 6 on both dice twice in a row.");
+        System.out.println("Getting 1 on both dice, will reset your score.");
+        System.out.println("Player 1's turn! Throw the dice?:");
 
-        //disse er double da de senere bliver assign'et dice 1 og 2, som er double's (pga. random funktionen)
         double player1Count = 0;
         double player2Count = 0;
+        int p1SixWin = 0;
+        int p2SixWin = 0;
 
-        /*
-        //første kast
-        System.out.println("Player 1 starts! Throw the dice? (yes/no)");
-        userResponse();
-        player1Count = Math.floor(Math.random() *(12 - 1 + 1) + 1);
-        System.out.println(player1Count);
-        */
-
-        //spillet udføres her:
         while (true) {
-            System.out.println("Player 1's turn! Throw the dice?:");
             userResponse();
             rollDice();
             player1Count += dice1 + dice2;
-            System.out.println("player 1 is now at " + (int) player1Count + " points!");
 
-            if (player1Count >= 40 ) {
-                System.out.println("Player 1 has won this game! \nCongrats player 1! -and better luck next time player 2 🙂");
+            if (dice1 == 6 && dice2 == 6){
+                p1SixWin++;
+            }else{
+                p1SixWin = 0;
+            }
+
+            if (p1SixWin == 2) {
+                System.out.println("Player 1 has hit 6 on both dice, TWICE in a row!");
+                System.out.println("Player 1 has won this game! \nCongrats player 1! -and better luck next time player 2 :)");
+                endGame();
+            }
+
+            if (dice1 == 1 && dice2 == 1) {
+                player1Count = 0;
+                System.out.println("Player 1 has hit 1 on both dice! This means they lose all of their points!");
+            }
+
+            System.out.println("Player 1 is now at " + (int) player1Count + " points!");
+
+            if (player1Count >= 40 && dice1 == dice2) {
+                System.out.println("Player 1 has won this game! \nCongrats player 1! -and better luck next time player 2 :)");
                 endGame();
             }
 
@@ -90,10 +87,28 @@ public class rapoo {
             userResponse();
             rollDice();
             player2Count += dice1 + dice2;
-            System.out.println("player 2 is now at " + (int) player2Count + " points!");
 
-            if (player2Count >= 40) {
-                System.out.println("Player 2 has won this game! \nCongrats player 2! -and better luck next time player 1 🙂");
+            if (dice1 == 6 && dice2 == 6){
+                p2SixWin++;
+            }else{
+                p2SixWin = 0;
+            }
+
+            if (p2SixWin == 2) {
+                System.out.println("Player 2 has hit 6 on both dice, TWICE in a row!");
+                System.out.println("Player 2 has won this game! \nCongrats player 2! -and better luck next time player 1 :)");
+                endGame();
+            }
+
+            if (dice1 == 1 && dice2 == 1) {
+                player2Count = 0;
+                System.out.println("Player 2 has hit 1 on both dice! This means they lose all of their points!");
+            }
+
+            System.out.println("Player 2 is now at " + (int) player1Count + " points!");
+
+            if (player2Count >= 40 && dice1 == dice2) {
+                System.out.println("Player 2 has won this game! \nCongrats player 2! -and better luck next time player 1 :)");
                 endGame();
             }
         }
