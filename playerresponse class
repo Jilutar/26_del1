@@ -1,0 +1,41 @@
+import java.util.Scanner;
+class Playerresponse {
+
+    static void endGame() {
+        System.exit(0);
+        scanner.close();
+    }
+    
+    public static void PlayerResponse() {
+        String scanner = new java.util.Scanner(System.in);
+        String input = scanner.nextLine().toLowerCase();
+        
+        if (input.equals("n")) {
+            System.out.println("Quit the game? (y/n)");
+            input.nextLine().toLowerCase();
+                if (input.equals("y")) {
+                    System.out.println("Game will end.");
+                    endGame();
+                } else if (input.equals("n")) {
+                    System.out.println("The game continues with your dice:");
+                }
+        } else if (!input.equals("y")) {
+            do {
+                System.out.println("Wrong input. Try again with y/n : ");
+                input = scanner.nextLine().toLowerCase();
+                    if (input.equals("y") || input.equals("n")){
+                        break;
+                    }
+            } while (!input.equals("y") || !input.equals("n"));
+
+        }
+
+
+
+
+    }
+
+
+    
+
+}
